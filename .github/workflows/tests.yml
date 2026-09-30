@@ -1,0 +1,46 @@
+name: Test the cask
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  # Weekly, so a moved file, a rule Homebrew tightens or a change in how
+  # macOS judges the app shows up here before a user finds it.
+  schedule:
+    - cron: "41 5 * * 1"
+  workflow_dispatch:
+
+permissions: {}
+
+defaults:
+  run:
+    shell: bash -xeuo pipefail {0}
+
+jobs:
+  cask:
+    runs-on: macos-26
+    permissions:
+      contents: read
+    steps:
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@1e34f2e2acaa766b7efacb8c26352e6abbb023f9 # 2026.09.13.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: brew style --cask leapdeck-app/tap/leapdeck
+
+      - run: brew audit --cask --strict --online leapdeck-app/tap/leapdeck
+
+      - run: brew install --cask leapdeck-app/tap/leapdeck
+
+      # What a buyer's Mac asks: is it signed by the team and notarized. The
+      # quarantine flag Homebrew puts on the download is still on the app.
+      - name: Ask Gatekeeper
+        run: |
+          app=/Applications/Leapdeck.app
+          codesign --verify --deep --strict "$app"
+          spctl --assess --type execute --verbose=4 "$app" 2>&1 | tee "$RUNNER_TEMP/assess.txt"
+          grep -q 'source=Notarized Developer ID' "$RUNNER_TEMP/assess.txt"
+
+      - run: brew uninstall --zap --cask leapdeck-app/tap/leapdeck
