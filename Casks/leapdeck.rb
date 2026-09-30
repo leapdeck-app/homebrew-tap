@@ -7,7 +7,7 @@ cask "leapdeck" do
   # it is kept for good because Sparkle builds every delta from the earlier ones.
   url "https://leapdeck.app/updates/Leapdeck-#{version}.zip"
   name "Leapdeck"
-  desc "Leap straight to any Space, full-screen apps included, with SIP left on"
+  desc "Jump straight to any Space, full screen apps included"
   homepage "https://leapdeck.app/"
 
   livecheck do

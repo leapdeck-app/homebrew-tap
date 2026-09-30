@@ -1,7 +1,8 @@
 # Leapdeck tap
 
 [Homebrew](https://brew.sh) tap for [Leapdeck](https://leapdeck.app), which jumps
-straight to any Space on a Mac, full-screen apps included, with SIP left on.
+your Mac straight to any Space, full screen apps included, from a hotkey, the menu
+bar or your iPhone.
 
 ```sh
 brew install --cask leapdeck-app/tap/leapdeck
@@ -12,8 +13,8 @@ cask from a tap that is not its own only when it is installed by its full name o
 trusted with `brew trust`, so `brew tap leapdeck-app/tap` followed by
 `brew install --cask leapdeck` is refused until you trust the cask.
 
-Leapdeck needs macOS 14 Sonoma or later and runs on Apple Silicon and Intel. The
-cask installs the same signed and notarized app as the website's download.
+Leapdeck needs macOS 14 Sonoma or later. The cask installs the same signed and
+notarized app as the website's download.
 
 ## Updating
 
