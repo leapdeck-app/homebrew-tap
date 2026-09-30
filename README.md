@@ -29,8 +29,8 @@ brew uninstall --cask leapdeck-app/tap/leapdeck
 ```
 
 This removes the app. Add `--zap` to remove its settings, its list of paired
-phones and its caches as well. A Pro license file is left behind on purpose:
-deleting it without deactivating first leaves one of the license's five
+phones and its caches as well. A Leapdeck Pro license file is left behind on
+purpose: deleting it without deactivating first leaves one of the license's five
 activations counted. To remove the license too, choose Deactivate on the Pro tab
 before uninstalling.
 
