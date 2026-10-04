@@ -1,6 +1,6 @@
 cask "leapdeck" do
-  version "0.3"
-  sha256 "bd1b8908ae7ac99b7eab71fe9505942339d974c15f8686774917565c3f7c0522"
+  version "0.4"
+  sha256 "85558d3a5f1f66da0669742bc7dabfa8128a34a2f3a01eccbf3585a43d98744d"
 
   # The archive Sparkle installs, not the DMG on the website. Every release has
   # to upload it for the update feed to work, it is named for its version, and
